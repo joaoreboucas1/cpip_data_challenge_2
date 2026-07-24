@@ -1,6 +1,19 @@
 # Roman Data Challenge 2
 This is my attempt at the Roman DC2.
 
+I am using Cocoa v4.11.2.
+
+## Issues and Feedbacks
+- Cosmolike needs as input the full data vector, rather than the cosmic shear only part which was provided. The user needs to fill the other entries manually. While the standard computation for a lens-equals-source setup with 8 tomographic bins and 15 angular bins would yield 2160 elements, the `cocoa_roman_real` project excludes 3 GGL bin pairs by default, and then the expected data vector length is 2115 (= 2160 - 3*15). The solution is to pad the given data vectors with zeroes, see `data/datavectors/fill_datavectors.py`. While Cosmolike crashes when the provided data vector has invalid length, it could be useful to log the expected length and the actual length during the crash.
+- Additionally, the covariance matrix is not given in a Cosmolike-supported format. Cosmolike supports covariance files with either 3 or 10 columns. The covariance format itself is fine, however, in its header, it states that: "# Column 9 (non-Gaussian) is omitted: a sample covariance yields only the total, not the Gaussian/non-Gaussian split." A temporary solution would be to append a new column filled with zeros to the given covariance, since Cosmolike adds columns 8 and 9, see `cosmolike/generic_interface.cpp`, function `set_inv_cov`. This is implemented in `data/fill_cov.py`.
+- When trying to run a likelihood evaluation with `ones.mask`, Cosmolike raises an error regarding that the matrix is singular:
+    ```
+    File "/Users/joao/cosmo/cocoa/Cocoa/cobaya/cobaya/likelihoods/roman_real/_cosmolike_prototype_base.py", line 124, in initialize
+        ci.init_data_real(self.cov_file, self.mask_file, self.data_vector_file)
+    RuntimeError: inv(): matrix is singular
+    ```
+    However, trying to invert the covariance with Numpy in `data/check_covmat.py` is successful, indicating that the matrix is not singular, but actually we need to fill the 3x2pt part just like with the data vectors. A temporary solution would be to fill the diagonal entries (i, i), with i going from 780 to 2114, with ones. This is also done in `data/fill_cov.py` script.
+
 -----------
 # Original README Below
 -----------

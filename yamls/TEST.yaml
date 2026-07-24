@@ -17,7 +17,6 @@ likelihood:
     IA_model: 0  # NLA (0) or TATT (1)
     IA_code: 0    # CFASTPT (0) or FASTPT (1) (only works if not NLA)
     IA_redshift_evolution: 3
-    ggl_exclude: [[6,0], [7,0], [7,1]]
     debug: false
     use_baryon_pca: false
     create_baryon_pca: false
@@ -47,13 +46,11 @@ sampler:
     N: 1
     override:
       As_1e9: 2.1
-      ns: 0.96605
-      H0: 67.32
+      ns: 0.96
+      H0: 67
       omegab: 0.04
       omegam: 0.3
       mnu: 0.06
-      w0pwa: -1.0
-      w: -1.0
       roman_DZ_S1: 0.0
       roman_DZ_S2: 0.0
       roman_DZ_S3: 0.0
@@ -72,9 +69,3 @@ sampler:
       roman_M8: 0.0
       roman_A1_1: 0.6
       roman_A1_2: -1.5
-      # TATT PARAMETERS
-      roman_A2_1: 0.0
-      roman_BTA_1: 0.0
-      #roman_A2_1: 0.05
-      #roman_BTA_1: 0.001
-      roman_A2_2: -1.51541

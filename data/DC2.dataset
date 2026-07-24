@@ -1,5 +1,5 @@
-data_file = datavectors/datavector_1.modelvector
-cov_file = cov_sim.dat
+data_file = datavectors/datavector_01.modelvector
+cov_file = cov_sim_cosmolike_format.dat
 mask_file = ones.mask
 nz_lens_file = DC2.nz
 nz_source_file = DC2.nz

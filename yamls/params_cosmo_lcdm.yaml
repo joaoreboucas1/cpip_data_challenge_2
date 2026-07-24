@@ -92,6 +92,3 @@ omegal:
   latex: \Omega_\Lambda
 sigma8:
   latex: \sigma_8
-S8:
-  value: 'lambda sigma8, omegam: sigma8*(omegam/0.3)**(0.5)'
-  latex: S_8
