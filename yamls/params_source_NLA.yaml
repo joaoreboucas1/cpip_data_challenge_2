@@ -1,0 +1,208 @@
+# WL photo-z errors
+roman_DZ_S1:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  proposal: 0.002
+  latex: \Delta z_\mathrm{s,roman}^1
+roman_DZ_S2:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  proposal: 0.002
+  latex: \Delta z_\mathrm{s,roman}^2
+roman_DZ_S3:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  proposal: 0.002
+  latex: \Delta z_\mathrm{s,roman}^3
+roman_DZ_S4:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  proposal: 0.002
+  latex: \Delta z_\mathrm{s,roman}^4
+roman_DZ_S5:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  proposal: 0.002
+  latex: \Delta z_\mathrm{s,roman}^5
+roman_DZ_S6:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  proposal: 0.002
+  latex: \Delta z_\mathrm{s,roman}^6
+roman_DZ_S7:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  proposal: 0.002
+  latex: \Delta z_\mathrm{s,roman}^7
+roman_DZ_S8:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.002
+  proposal: 0.002
+  latex: \Delta z_\mathrm{s,roman}^8
+# ------------------------------------------------------------------------
+# ------------------------------------------------------------------------
+# Shear calibration parameters
+roman_M1:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  proposal: 0.005
+  latex: m_\mathrm{roman}^1
+roman_M2:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  proposal: 0.005
+  latex: m_\mathrm{roman}^2
+roman_M3:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  proposal: 0.005
+  latex: m_\mathrm{roman}^3
+roman_M4:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  proposal: 0.005
+  latex: m_\mathrm{roman}^4
+roman_M5:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  proposal: 0.005
+  latex: m_\mathrm{roman}^5
+roman_M6:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  proposal: 0.005
+  latex: m_\mathrm{roman}^6
+roman_M7:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  proposal: 0.005
+  latex: m_\mathrm{roman}^7
+roman_M8:
+  prior:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  ref:
+    dist: norm
+    loc: 0.0
+    scale: 0.005
+  proposal: 0.005
+  latex: m_\mathrm{roman}^8
+# ------------------------------------------------------------------------
+# ------------------------------------------------------------------------
+# Intrinsic alignment
+roman_A1_1:
+  prior:
+    min: -5
+    max:  5
+  ref:
+    dist: norm
+    loc: 0.7
+    scale: 0.5
+  proposal: 0.5
+  latex: A_\mathrm{1-IA,roman}^1
+roman_A1_2:
+  prior:
+    min: -5
+    max:  5
+  ref:
+    dist: norm
+    loc: -1.7
+    scale: 0.5
+  proposal: 0.5
+roman_A2_1:
+  value: 0
+roman_A2_2:
+  value: 0
+roman_BTA_1:
+  value: 0

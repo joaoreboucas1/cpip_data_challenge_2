@@ -1,3 +1,10 @@
+# Roman Data Challenge 2
+This is my attempt at the Roman DC2.
+
+-----------
+# Original README Below
+-----------
+
 # Data Challenge 2 - Cosmic shear
 In the Roman CPIP Data Challenge 2, we aim to
 - Perform blind analyses with Cocoa on realistic medium-tier data vectors
