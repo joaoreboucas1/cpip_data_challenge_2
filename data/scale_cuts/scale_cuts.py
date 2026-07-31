@@ -4,11 +4,8 @@ Script to compute scale cuts using DES-Y3 methodology (Krause et al 2021, https:
 - Clustering and GGL scale cuts are detemined by setting minimum separation scales in Mpc/h, and then converting those to minimum angular separations using the average redshift of each lens bin.
 The script prints a mask file for Cocoa analyses, so the user can redirect that to a file of their preference.
 Usage:
-    python scale_cuts.py dv1 dv2 cov [--chi2_threshold threshold] [--Rmin_gc Rmin_gc] [--Rmin_ggl Rmin_ggl] [--output mask_filename]
+    python scale_cuts.py --chi2_threshold_per_pair threshold --output mask_filename [--verbose]
 Where:
-    dv1: Path to first data vector (e.g. linear theory)
-    dv2: Path to second data vector (e.g. halofit)
-    cov: Path to covariance matrix
     threshold: Chi2 threshold for cosmic shear scale cuts (default: 0.5)
     Rmin_gc: Minimum separation scale for galaxy clustering in Mpc/h (default: 1.0)
     Rmin_ggl: Minimum separation scale for galaxy-galaxy lensing in Mpc/h (default: 1.0)
@@ -66,14 +63,14 @@ def invert_cov(cov):
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument("--threshold", required=True, type=float, help="Chi2 threshold for cosmic shear scale cuts")
+    parser.add_argument("--chi2_threshold_per_pair", required=True, type=float, help="Chi2 threshold for cosmic shear scale cuts")
     parser.add_argument("--output", required=True, type=str, help="Output file for mask")
     parser.add_argument("--verbose", action="store_true", help="Enable tracing of shear scale cuts")
     args = parser.parse_args()
 
     dv_baseline_filename = "BASELINE.modelvector"
-    dv_nobaryons_filename = "STRONGBARYONS.modelvector"
-    dv_strongbaryons_filename = "NOBARYONS.modelvector"
+    dv_strongbaryons_filename = "STRONGBARYONS.modelvector"
+    dv_nobaryons_filename = "NOBARYONS.modelvector"
 
     _, dv_baseline      = np.loadtxt(dv_baseline_filename, unpack=True)
     _, dv_nobaryons     = np.loadtxt(dv_nobaryons_filename, unpack=True)
@@ -103,7 +100,7 @@ if __name__ == "__main__":
     print(f"Loaded covariance {cov_filename}")
 
     print(f"Scale cut settings:")
-    print(f"  - chi2_threshold = {args.threshold}")
+    print(f"  - chi2_threshold = {args.chi2_threshold_per_pair}")
     print("--------------------")
 
     # Cosmic shear scale cuts
@@ -136,9 +133,9 @@ if __name__ == "__main__":
 
             if args.verbose:
                 print("--------------------")
-                print(f"Initial chi2 for {shear_func} bin pair {bin_pair} = {chi2_ij}")
+                print(f"Initial chi2 for {shear_func} bin pair {bin_pair}: {chi2_nobaryons_ij:.4f} (no baryons), {chi2_strongbaryons_ij:.4f} (strong baryons)")
 
-            while chi2_ij > args.threshold / NUM_SHEAR_2PCFS:
+            while chi2_ij > args.chi2_threshold_per_pair:
                 mask[num_removed_elements] = 0.0
                 num_removed_elements += 1
 
@@ -153,14 +150,20 @@ if __name__ == "__main__":
                 chi2_nobaryons_ij     = delta_nobaryons_ij_masked     @ invcov_ij_masked @ delta_nobaryons_ij_masked
                 chi2_strongbaryons_ij = delta_strongbaryons_ij_masked @ invcov_ij_masked @ delta_strongbaryons_ij_masked
                 chi2_ij = max(chi2_nobaryons_ij, chi2_strongbaryons_ij)
-                # chi2_ij = chi2_strongbaryons_ij
                 
                 if args.verbose: 
-                    print(f"({bin_pair}) Removed {num_removed_elements} out of {NUM_ANG_BINS} elements. chi2 for {shear_func} bin pair {bin_pair} = {chi2_nobaryons_ij:.4f} (baseline vs no baryons), {chi2_strongbaryons_ij:.4f} (baseline vs strong baryons)")
+                    print(f"{shear_func} {bin_pair} Removed {num_removed_elements} out of {NUM_ANG_BINS} elements. chi2 for {shear_func} bin pair {bin_pair} = {chi2_nobaryons_ij:.4f} (no baryons), {chi2_strongbaryons_ij:.4f} (strong baryons)")
 
             full_shear_mask = np.concatenate((full_shear_mask, mask))
-            if num_removed_elements < NUM_ANG_BINS: minimum_angles[i] = theta[num_removed_elements] # NOTE: minimum_angles[i] is INCLUDED in the scale cuts
-            else: minimum_angles[i] = 999
+            if num_removed_elements < NUM_ANG_BINS:
+                minimum_angles[i] = theta[num_removed_elements] # NOTE: minimum_angles[i] is INCLUDED in the scale cuts
+                if args.verbose: 
+                    print(f"{shear_func} {bin_pair} chi2 below threshold {args.chi2_threshold_per_pair} after removing {num_removed_elements} out of {NUM_ANG_BINS} elements, minimum angle {minimum_angles[i]:.2f} (inclusive). chi2 for {shear_func} bin pair {bin_pair} = {chi2_nobaryons_ij:.4f} (baseline vs no baryons), {chi2_strongbaryons_ij:.4f} (baseline vs strong baryons)")
+            else: 
+                if args.verbose: 
+                    print(f"{shear_func} {bin_pair} Could not put chi2 below threshold {args.chi2_threshold_per_pair}. chi2 for {shear_func} bin pair {bin_pair} = {chi2_nobaryons_ij:.4f} (baseline vs no baryons), {chi2_strongbaryons_ij:.4f} (baseline vs strong baryons). Removing whole pair.")
+                minimum_angles[i] = 999
+        if args.verbose: print("--------------------")
         return minimum_angles, full_shear_mask
 
     min_angles, shear_mask = compute_cuts_xi_ij()
@@ -177,7 +180,7 @@ if __name__ == "__main__":
     chi2_nobaryons = delta_nobaryons_masked@invcov_shear@delta_nobaryons_masked
     chi2_strongbaryons = delta_strongbaryons_masked@invcov_shear@delta_strongbaryons_masked
 
-    print(f"Shear chi2: {chi2_nobaryons:.4f} (no baryons), {chi2_strongbaryons:.4f} (strong baryons)")
+    print(f"Full chi2: {chi2_nobaryons:.4f} (no baryons), {chi2_strongbaryons:.4f} (strong baryons)")
     
     ROMAN_3X2_DV_LEN = 2115
     full_mask = np.concatenate((shear_mask, np.zeros(ROMAN_3X2_DV_LEN - SHEAR_LEN)))

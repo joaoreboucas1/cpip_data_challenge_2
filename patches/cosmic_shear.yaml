@@ -1,6 +1,7 @@
 path: null
 data_file: roman_real_M1_GGL0.05.dataset
 data_vector_file: null
+mask_file: null
 accuracyboost: 1.0
 integration_accuracy: 0 # integer 0, 1 or 2
 lmax: 70000 # lmax computed for real space correlation function

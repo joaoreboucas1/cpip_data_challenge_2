@@ -52,7 +52,7 @@ class _cosmolike_prototype_base(DataSetLikelihood):
     self.probe = probe
     if self.data_vector_file is None: self.data_vector_file = ini.relativeFileName('data_file')
     self.cov_file = ini.relativeFileName('cov_file')
-    self.mask_file = ini.relativeFileName('mask_file')
+    if self.mask_file is not None: self.mask_file = ini.relativeFileName('mask_file')
     self.lens_file = ini.relativeFileName('nz_lens_file')
     self.source_file = ini.relativeFileName('nz_source_file')
     self.lens_ntomo = ini.int("lens_ntomo")
