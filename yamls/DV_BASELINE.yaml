@@ -1,7 +1,7 @@
 timing: True
 debug: False
 stop_at_error: False
-output: ./projects/cpip_data_challenge_2/chains/DV_BARYONS
+output: ./projects/cpip_data_challenge_2/chains/DV_BASELINE
 
 likelihood:
   roman_real.cosmic_shear:
@@ -18,9 +18,9 @@ likelihood:
     IA_code: 0    # CFASTPT (0) or FASTPT (1) (only works if not NLA)
     IA_redshift_evolution: 3
     add_baryons_on_dv: True
-    which_bsims_add_on_dv: "owls_AGN_t87"
+    which_bsims_add_on_dv: "BAHAMAS_T78"
     print_datavector: True
-    print_datavector_file: "./projects/cpip_data_challenge_2/data/scale_cuts/BARYONS.modelvector"
+    print_datavector_file: "./projects/cpip_data_challenge_2/data/scale_cuts/BASELINE.modelvector"
 
 params: !defaults
   - params_cosmo_lcdm
