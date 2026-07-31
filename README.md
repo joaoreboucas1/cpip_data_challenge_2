@@ -1,7 +1,7 @@
 # Roman Data Challenge 2
 This is my attempt at the Roman DC2.
 
-I am using Cocoa v4.11.2.
+I am using Cocoa v4.11.2 and `roman_real` commit `62cfa576d6`.
 
 ## Issues and Feedbacks
 - Cosmolike needs as input the full data vector, rather than the cosmic shear only part which was provided. The user needs to fill the other entries manually. While the standard computation for a lens-equals-source setup with 8 tomographic bins and 15 angular bins would yield 2160 elements, the `cocoa_roman_real` project excludes 3 GGL bin pairs by default, and then the expected data vector length is 2115 (= 2160 - 3*15). The solution is to pad the given data vectors with zeroes, see `data/datavectors/fill_datavectors.py`. While Cosmolike crashes when the provided data vector has invalid length, it could be useful to log the expected length and the actual length during the crash.

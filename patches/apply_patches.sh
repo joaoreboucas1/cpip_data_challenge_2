@@ -1,7 +1,7 @@
 #!/bin/bash
 set -xe
 
-if [[ -z ${ROOTDIR} ]] then
+if [[ -z ${ROOTDIR} ]]; then
     echo "ERROR: environment variable ROOTDIR not defined"
     exit 1
 fi

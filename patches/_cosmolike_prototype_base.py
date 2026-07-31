@@ -144,7 +144,7 @@ class _cosmolike_prototype_base(DataSetLikelihood):
         if self.add_baryons_on_dv:
           sim = self.which_bsims_add_on_dv
           self.allsims = ini.relativeFileName('all_sims_hdf5_file')
-          ci.init_baryons_contamination(sim = sim, allsims=allsims)
+          ci.init_baryons_contamination(sim = sim, allsims=self.allsims)
 
     if self.use_baryon_pca:
       baryon_pca_file = ini.relativeFileName('baryon_pca_file')
