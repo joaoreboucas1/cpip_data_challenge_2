@@ -18,8 +18,9 @@ module purge > /dev/null 2>&1
 source ~/.bashrc 
 
 cd $SLURM_SUBMIT_DIR
+echo Going to ${SLURM_SUBMIT_DIR}
 conda activate cocoa
-source start_cocoa
+source start_cocoa.sh
 
 export OMP_PROC_BIND=close
 export OMP_PLACES=cores
