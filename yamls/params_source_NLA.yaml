@@ -206,3 +206,18 @@ roman_A2_2:
   value: 0
 roman_BTA_1:
   value: 0
+# BARYON PCA
+roman_BARYON_Q1:
+  prior:
+    min: -5
+    max: 15
+  latex: Q1_\mathrm{roman}^1
+roman_BARYON_Q2:
+  value: 0.0
+  latex: Q2_\mathrm{roman}^2
+roman_BARYON_Q3:
+  value: 0.0
+  latex: Q3_\mathrm{roman}^3
+roman_BARYON_Q4:
+  value: 0.0
+  latex: Q4_\mathrm{roman}^4

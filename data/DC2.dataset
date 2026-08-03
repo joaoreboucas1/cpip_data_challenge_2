@@ -8,4 +8,5 @@ source_ntomo = 8
 n_theta = 15
 theta_min_arcmin = 2.5
 theta_max_arcmin = 250.
+baryon_pca_file = BARYON_PCA_ANTILLES.txt
 all_sims_hdf5_file = baryons_logPkR.h5
