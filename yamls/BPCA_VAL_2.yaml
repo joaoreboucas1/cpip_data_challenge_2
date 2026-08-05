@@ -1,7 +1,7 @@
 timing: True
 debug: False
 stop_at_error: False
-output: ./projects/cpip_data_challenge_2/chains/BPCA_VAL_2
+output: /xdisk/timeifler/joaoreboucas/cpip_data_challenge_2/BPCA_VAL_2
 
 likelihood:
   roman_real.cosmic_shear:
