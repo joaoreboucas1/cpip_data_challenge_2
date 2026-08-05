@@ -15,19 +15,20 @@ echo Job starting at `date` on node `hostname`
 
 # Clear the environment from any previously loaded modules
 module purge > /dev/null 2>&1
-source ~/.bashrc 
+module load micromamba
+source ~/.bashrc
 
 cd $SLURM_SUBMIT_DIR
-echo Going to ${SLURM_SUBMIT_DIR}
-conda activate cocoa
+micromamba activate cocoa
 source start_cocoa.sh
 
 export OMP_PROC_BIND=close
 export OMP_PLACES=cores
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
-mpirun -n ${SLURM_NTASKS} --oversubscribe --mca pml ^ucx \
+mpirun -n ${SLURM_NTASKS} --oversubscribe --mca pml ob1 \
   --mca btl vader,tcp,self --bind-to core:overload-allowed \
   --rank-by slot --map-by numa:pe=${OMP_NUM_THREADS} \
   --mca mpi_yield_when_idle 1 \
+  --report-bindings \
   cobaya-run ./projects/cpip_data_challenge_2/yamls/BPCA_VAL_${SLURM_ARRAY_TASK_ID}.yaml -r
