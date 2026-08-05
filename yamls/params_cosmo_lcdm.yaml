@@ -53,14 +53,7 @@ omegam:
   latex: \Omega_\mathrm{m}
   drop: true
 mnu:
-  prior:
-    min: 0.06
-    max: 0.6
-  ref:
-    dist: norm
-    loc: 0.25
-    scale: 0.1
-  proposal: 0.05
+  value: 0.06
 w:
   value: -1
 wa:
@@ -81,7 +74,7 @@ omegabh2:
   value: 'lambda omegab, H0: omegab*(H0/100)**2'
   latex: \Omega_\mathrm{b} h^2
 omegach2:
-  value: 'lambda omegam, omegab, mnu, H0: (omegam-omegab)*(H0/100)**2-(mnu*(3.046/3)**0.75)/94.0708'
+  value: 'lambda omegam, omegab, mnu, H0: (omegam-omegab)*(H0/100)**2-(0.06*(3.046/3)**0.75)/94.0708'
   latex: \Omega_\mathrm{c} h^2
 omegamh2:
   derived: 'lambda omegam, H0: omegam*(H0/100)**2'
