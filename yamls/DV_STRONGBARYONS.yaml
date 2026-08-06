@@ -49,7 +49,6 @@ sampler:
       H0: 67
       omegab: 0.04
       omegam: 0.3
-      mnu: 0.06
       roman_DZ_S1: 0.0
       roman_DZ_S2: 0.0
       roman_DZ_S3: 0.0
