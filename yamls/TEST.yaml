@@ -8,6 +8,7 @@ likelihood:
     use_emulator: 0
     path: ./projects/cpip_data_challenge_2/data
     data_file: DC2.dataset
+    data_vector_file: ./projects/cpip_data_challenge_2/data/scale_cuts/BASELINE.modelvector
     accuracyboost: 1.0
     integration_accuracy: 0
     lmax: 75000
@@ -18,10 +19,7 @@ likelihood:
     IA_code: 0    # CFASTPT (0) or FASTPT (1) (only works if not NLA)
     IA_redshift_evolution: 3
     debug: false
-    use_baryon_pca: false
-    create_baryon_pca: false
-    baryon_pca_select_sims: "antilles-2-99/antilles-101-378/antilles-380-400"
-    filename_baryon_pca: "./projects/lsst_y1/chains/pca.txt"
+    use_baryon_pca: true
 
 params: !defaults
   - params_cosmo_lcdm
@@ -50,7 +48,6 @@ sampler:
       H0: 67
       omegab: 0.04
       omegam: 0.3
-      mnu: 0.06
       roman_DZ_S1: 0.0
       roman_DZ_S2: 0.0
       roman_DZ_S3: 0.0
@@ -69,3 +66,5 @@ sampler:
       roman_M8: 0.0
       roman_A1_1: 0.6
       roman_A1_2: -1.5
+      roman_BARYON_Q1: -6.378e-5
+      roman_BARYON_Q2: 1.25469e-5
