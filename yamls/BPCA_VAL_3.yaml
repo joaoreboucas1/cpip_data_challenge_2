@@ -18,6 +18,7 @@ likelihood:
     IA_model: 0  # NLA (0) or TATT (1)
     IA_code: 0    # CFASTPT (0) or FASTPT (1) (only works if not NLA)
     IA_redshift_evolution: 3
+    use_baryon_pca: True
     
 
 params: !defaults
