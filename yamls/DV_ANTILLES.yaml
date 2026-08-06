@@ -18,9 +18,9 @@ likelihood:
     IA_code: 0    # CFASTPT (0) or FASTPT (1) (only works if not NLA)
     IA_redshift_evolution: 3
     add_baryons_on_dv: True
-    which_bsims_add_on_dv: "antilles-1"
+    which_bsims_add_on_dv: "antilles-400"
     print_datavector: True
-    print_datavector_file: "./projects/cpip_data_challenge_2/data/scale_cuts/antilles-1.modelvector"
+    print_datavector_file: "./projects/cpip_data_challenge_2/results/baryon_pca_validation/antilles_dvs/antilles-400.modelvector"
 
 params: !defaults
   - params_cosmo_lcdm
