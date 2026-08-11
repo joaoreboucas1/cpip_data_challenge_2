@@ -209,8 +209,8 @@ roman_BTA_1:
 # BARYON PCA
 roman_BARYON_Q1:
   prior:
-    min: -2e-4
-    max: 0
+    min: -2.5e-4
+    max: 1e-4
   ref:
     dist: norm
     loc: -5e-5
@@ -219,7 +219,7 @@ roman_BARYON_Q1:
 roman_BARYON_Q2:
   prior:
     min: -3.5e-5
-    max: 1.5e-5
+    max: 3.5e-5
   ref:
     dist: norm
     loc: 0
