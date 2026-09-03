@@ -22,7 +22,7 @@ source ~/.bashrc
 
 cd $SLURM_SUBMIT_DIR
 micromamba activate cocoa
-sleep $(( SLURM_ARRAY_TASK_ID*2 ))
+sleep $(( SLURM_ARRAY_TASK_ID*3 ))
 source start_cocoa.sh
 
 export OMP_PROC_BIND=close
