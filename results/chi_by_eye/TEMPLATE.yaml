@@ -1,0 +1,39 @@
+timing: True
+debug: False
+stop_at_error: False
+output: /xdisk/timeifler/joaoreboucas/cpip_data_challenge_2/MCMC_1
+
+likelihood:
+  roman_real.cosmic_shear:
+    use_emulator: 0
+    path: ./projects/cpip_data_challenge_2/data
+    data_file: DC2.dataset
+    data_vector_file: ./projects/cpip_data_challenge_2/data/datavectors/datavector_02.modelvector
+    accuracyboost: 1.0
+    integration_accuracy: 0
+    lmax: 75000
+    kmax_boltzmann: 7.5
+    # 1 EE2, 2 Halofit
+    non_linear_emul: 2
+    IA_model: 0  # NLA (0) or TATT (1)
+    IA_code: 0    # CFASTPT (0) or FASTPT (1) (only works if not NLA)
+    IA_redshift_evolution: 3
+    use_baryon_pca: True
+    
+params: !defaults
+  - params_cosmo_wcdm
+  - params_source_NLA
+
+theory:
+  camb:
+    path: ./external_modules/code/CAMB
+    stop_at_error: False
+    use_renames: True
+    extra_args:
+      halofit_version: mead2020
+      AccuracyBoost: 1.05
+      lens_potential_accuracy: 1.0
+      dark_energy_model: ppf
+      accurate_massive_neutrino_transfers: false
+      k_per_logint: 15
+      kmax: 7.5

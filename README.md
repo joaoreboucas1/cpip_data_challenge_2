@@ -3,7 +3,14 @@ This is my attempt at the Roman DC2.
 
 I am using Cocoa v4.11.2 and `roman_real` commit `62cfa576d6`.
 
+## The Challenge
+
+1. I validated an approach for baryonic feedback suppression model using PCA on the Antilles simulations, an approach based on Xu et al 2025, https://arxiv.org/abs/2510.25596. The results are given in `results/baryon_pca_validation/` showing that the pipeline can recover the fiducial cosmology even with diverse baryon feedback scenarios.
+2. We can now run chains on the 11 given cosmic shear data vectors. On my first attempt, I made a slight mistake: the yaml files would include reference points for an arbitrary cosmology, and for the simulated data vectors, the underlying cosmology can be very different than the arbitrary reference parameters. This mismatch between initial points and hidden fiducial cosmology hinders the convergence of some chains. To optimize the convergence of the remaining chains, I can do some $\chi$-by-eye to find a good initial point.
+
 ## Issues and Feedbacks
+As of Sep 9th 2026 the DC2 organizers have addressed the file format issues stated below.
+
 - Cosmolike needs as input the full data vector, rather than the cosmic shear only part which was provided. The user needs to fill the other entries manually. While the standard computation for a lens-equals-source setup with 8 tomographic bins and 15 angular bins would yield 2160 elements, the `cocoa_roman_real` project excludes 3 GGL bin pairs by default, and then the expected data vector length is 2115 (= 2160 - 3*15). The solution is to pad the given data vectors with zeroes, see `data/datavectors/fill_datavectors.py`. While Cosmolike crashes when the provided data vector has invalid length, it could be useful to log the expected length and the actual length during the crash.
 - Additionally, the covariance matrix is not given in a Cosmolike-supported format. Cosmolike supports covariance files with either 3 or 10 columns. The covariance format itself is fine, however, in its header, it states that: "# Column 9 (non-Gaussian) is omitted: a sample covariance yields only the total, not the Gaussian/non-Gaussian split." A temporary solution would be to append a new column filled with zeros to the given covariance, since Cosmolike adds columns 8 and 9, see `cosmolike/generic_interface.cpp`, function `set_inv_cov`. This is implemented in `data/fill_cov.py`.
 - When trying to run a likelihood evaluation with `ones.mask`, Cosmolike raises an error regarding that the matrix is singular:

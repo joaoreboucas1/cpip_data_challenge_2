@@ -1,0 +1,20 @@
+400 Antilles simulations, cosmic shear only (1080 entries)
+  chi2(antilles - DMO), full covariance: median 349.1, min 13.9, max 3326.5
+  weighted PCs: explained variance (whitened space) [9.8530e-01 1.3818e-02 7.0869e-04 9.9736e-05]
+  unweighted PCs: explained variance [9.6928e-01 2.9518e-02 1.0259e-03 1.0237e-04]
+  |cos| between weighted PCs (rows, data units, normalized) and unweighted PCs (columns):
+    PC1: 1.000 0.006 0.000 0.000
+    PC2: 0.198 0.980 0.009 0.001
+    PC3: 0.449 0.222 0.865 0.019
+    PC4: 0.297 0.145 0.146 0.904
+  chi2 of (antilles - DMO - reconstruction), full covariance, using the first n weighted PCs:
+    n = 0: median   349.096, 95th percentile  2089.099, max  3326.522
+    n = 1: median     6.984, 95th percentile    22.231, max    96.143
+    n = 2: median     2.535, 95th percentile     5.429, max     7.885
+    n = 3: median     1.178, 95th percentile     1.809, max     4.093
+    n = 4: median     1.064, 95th percentile     1.449, max     3.910
+  Q of the Antilles simulations (units of data noise) and priors (range +/- 25%, including Q = 0):
+    Q1: mean  -37.185, std  24.874, range [-122.181,   -6.414] -> prior [-151.123,   22.527]
+    Q2: mean   -1.984, std   2.946, range [  -7.000,   15.275] -> prior [ -12.568,   20.844]
+    Q3: mean    1.026, std   0.667, range [  -3.101,    2.713] -> prior [  -4.555,    4.167]
+    Q4: mean   -0.185, std   0.250, range [  -0.739,    0.760] -> prior [  -1.114,    1.134]

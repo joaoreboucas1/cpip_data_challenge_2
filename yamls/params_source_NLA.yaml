@@ -209,24 +209,30 @@ roman_BTA_1:
 # BARYON PCA
 roman_BARYON_Q1:
   prior:
-    min: -2.5e-4
-    max: 1e-4
+    min: -151
+    max: 23
   ref:
     dist: norm
-    loc: -5e-5
-    scale: 2e-5
+    loc: -37
+    scale: 10
   latex: Q1_\mathrm{roman}^1
 roman_BARYON_Q2:
   prior:
-    min: -3.5e-5
-    max: 3.5e-5
+    min: -12.6
+    max: 20.8
   ref:
     dist: norm
-    loc: 0
-    scale: 5e-6
+    loc: -2
+    scale: 3
   latex: Q2_\mathrm{roman}^2
 roman_BARYON_Q3:
-  value: 0.0
+  prior:
+    min: -4.6
+    max: 4.2
+  ref:
+    dist: norm
+    loc: 1
+    scale: 0.7
   latex: Q3_\mathrm{roman}^3
 roman_BARYON_Q4:
   value: 0.0
