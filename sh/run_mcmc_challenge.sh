@@ -21,7 +21,7 @@ module load micromamba
 source ~/.bashrc
 
 cd $SLURM_SUBMIT_DIR
-micromamba activate cocoa
+micromamba activate cocoa_new
 sleep $(( SLURM_ARRAY_TASK_ID*3 ))
 source start_cocoa.sh
 

@@ -23,7 +23,7 @@ likelihood:
     print_datavector_file: "./projects/cpip_data_challenge_2/data/scale_cuts/BASELINE.modelvector"
 
 params: !defaults
-  - params_cosmo_lcdm
+  - params_cosmo_wcdm
   - params_source_NLA
 
 theory:
@@ -32,7 +32,7 @@ theory:
     stop_at_error: False
     use_renames: True
     extra_args:
-      halofit_version: takahashi
+      halofit_version: mead2020
       AccuracyBoost: 1.05
       lens_potential_accuracy: 1.0
       dark_energy_model: ppf
@@ -49,6 +49,7 @@ sampler:
       H0: 67
       omegab: 0.04
       omegam: 0.3
+      w: -1.0
       roman_DZ_S1: 0.0
       roman_DZ_S2: 0.0
       roman_DZ_S3: 0.0

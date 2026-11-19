@@ -19,7 +19,7 @@ module load micromamba
 source ~/.bashrc
 
 cd $SLURM_SUBMIT_DIR
-micromamba activate cocoa
+micromamba activate cocoa_new
 source start_cocoa.sh
 
 export OMP_PROC_BIND=close

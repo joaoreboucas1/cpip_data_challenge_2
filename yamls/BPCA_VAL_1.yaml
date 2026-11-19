@@ -20,9 +20,8 @@ likelihood:
     IA_redshift_evolution: 3
     use_baryon_pca: True
     
-
 params: !defaults
-  - params_cosmo_lcdm
+  - params_cosmo_wcdm
   - params_source_NLA
 
 theory:
@@ -31,7 +30,7 @@ theory:
     stop_at_error: False
     use_renames: True
     extra_args:
-      halofit_version: takahashi
+      halofit_version: mead2020
       AccuracyBoost: 1.05
       lens_potential_accuracy: 1.0
       dark_energy_model: ppf
@@ -58,7 +57,7 @@ sampler:
     blocking:
     - [1,
         [
-          As_1e9, ns, H0, omegab, omegam
+          As_1e9, ns, H0, omegab, omegam, w
         ]
       ]
     - [6,
