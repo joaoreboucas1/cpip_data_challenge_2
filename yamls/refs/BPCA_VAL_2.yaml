@@ -1,0 +1,82 @@
+# Reference point of BPCA_VAL_2 (NOBARYONS): fiducial of DV_*.yaml + projection of (dv - DMO) on the PCs
+As_1e9:
+  ref:
+    loc: 2.1
+ns:
+  ref:
+    loc: 0.96
+H0:
+  ref:
+    loc: 67.0
+omegab:
+  ref:
+    loc: 0.04
+omegam:
+  ref:
+    loc: 0.3
+w:
+  ref:
+    loc: -1.0
+roman_DZ_S1:
+  ref:
+    loc: 0.0
+roman_DZ_S2:
+  ref:
+    loc: 0.0
+roman_DZ_S3:
+  ref:
+    loc: 0.0
+roman_DZ_S4:
+  ref:
+    loc: 0.0
+roman_DZ_S5:
+  ref:
+    loc: 0.0
+roman_DZ_S6:
+  ref:
+    loc: 0.0
+roman_DZ_S7:
+  ref:
+    loc: 0.0
+roman_DZ_S8:
+  ref:
+    loc: 0.0
+roman_M1:
+  ref:
+    loc: 0.0
+roman_M2:
+  ref:
+    loc: 0.0
+roman_M3:
+  ref:
+    loc: 0.0
+roman_M4:
+  ref:
+    loc: 0.0
+roman_M5:
+  ref:
+    loc: 0.0
+roman_M6:
+  ref:
+    loc: 0.0
+roman_M7:
+  ref:
+    loc: 0.0
+roman_M8:
+  ref:
+    loc: 0.0
+roman_A1_1:
+  ref:
+    loc: 0.6
+roman_A1_2:
+  ref:
+    loc: -1.5
+roman_BARYON_Q1:
+  ref:
+    loc: 0.0
+roman_BARYON_Q2:
+  ref:
+    loc: 0.0
+roman_BARYON_Q3:
+  ref:
+    loc: 0.0

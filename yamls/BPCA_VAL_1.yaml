@@ -23,6 +23,7 @@ likelihood:
 params: !defaults
   - params_cosmo_wcdm
   - params_source_NLA
+  - refs/BPCA_VAL_1
 
 theory:
   camb:

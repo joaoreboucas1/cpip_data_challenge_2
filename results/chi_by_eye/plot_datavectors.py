@@ -1,4 +1,4 @@
-# Plots the 11 challenge cosmic shear data vectors against a fiducial cosmology.
+# Plots the 21 challenge cosmic shear data vectors against a fiducial cosmology.
 #
 # The fiducial model vector is computed with Cosmolike through TEMPLATE.yaml: LCDM-like point (w = -1), NLA IA with
 # A1 = 0.6 and eta1 = -0.5, no photo-z or shear calibration offsets, no baryons (Q = 0). Error bars are the square root of the covariance
@@ -24,7 +24,7 @@ LIKELIHOOD = "roman_real.cosmic_shear"
 SHEAR_LEN  = 1080
 N_BINS     = 8
 N_THETA    = 15
-N_DVS      = 11
+N_DVS      = 21
 FIDUCIAL = {"As_1e9": 2.1, "ns": 0.96, "H0": 70.0, "omegab": 0.049, "omegam": 0.3, "w": -1.0,
             "roman_A1_1": 0.6, "roman_A1_2": -0.5}  # NLA: A1, eta1
 THETA_RANGE = (2.5, 200.0)  # arcmin, bin edges of DC2.dataset
